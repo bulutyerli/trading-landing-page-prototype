@@ -10,6 +10,15 @@ const config: Config = {
     extend: {
       colors: {
         main: '#121721',
+        beige: {
+          200: '#f5f5dc',
+        },
+        cyan: {
+          500: '#00bcd4',
+        },
+        cobalt: {
+          700: '#0047ab',
+        },
       },
     },
   },
