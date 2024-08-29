@@ -159,8 +159,16 @@ export default function Pricing() {
                           )}
                           <div className="flex-1">
                             <div className="inline-block w-full">
-                              <div className="flex justify-center items-baseline truncate text-center text-balance rounded-lg cursor-default px-4 py-3 text-white bg-slate-700 w-full">
-                                <h2 className="text-2xl">{price.title}</h2>
+                              <div className="flex justify-center items-baseline truncate text-center text-balance rounded-lg cursor-500">
+                                <h2
+                                  className={`text-2xdefault px-4 py-3 text-white w-full ${
+                                    price.popular
+                                      ? 'bg-gradient-to-r from-cobalt-700 to-cyan-500'
+                                      : 'bg-slate-700'
+                                  }`}
+                                >
+                                  {price.title}
+                                </h2>
                               </div>
                             </div>
                             <div className="mt-14 flex flex-wrap justify-center items-baseline gap-1">

@@ -1,3 +1,4 @@
+import FAQ from './components/FAQ';
 import FeatureOne from './components/Features/FeatureOne';
 import FeatureThree from './components/Features/FeatureThree';
 import FeatureTwo from './components/Features/FeatureTwo';
@@ -5,6 +6,7 @@ import FeatureWrapper from './components/Features/FeatureWrapper';
 import Features from './components/Features/FeatureWrapper';
 import Hero from './components/Hero';
 import Pricing from './components/Pricing';
+import Reviews from './components/Reviews';
 
 export default function Home() {
   return (
@@ -51,7 +53,9 @@ export default function Home() {
           <FeatureThree />
         </FeatureWrapper>
       </div>
+      <Reviews />
       <Pricing />
+      <FAQ />
     </main>
   );
 }
