@@ -4,6 +4,7 @@ import FeatureTwo from './components/Features/FeatureTwo';
 import FeatureWrapper from './components/Features/FeatureWrapper';
 import Features from './components/Features/FeatureWrapper';
 import Hero from './components/Hero';
+import Pricing from './components/Pricing';
 
 export default function Home() {
   return (
@@ -50,6 +51,7 @@ export default function Home() {
           <FeatureThree />
         </FeatureWrapper>
       </div>
+      <Pricing />
     </main>
   );
 }
