@@ -1,6 +1,6 @@
-import Link from 'next/link';
 import ImageSlider from './ImageSlider';
 import ColoredButton from './ColoredButton';
+import FadeIn from './FadeIn';
 
 export default function Hero() {
   const heroImages = [
@@ -32,18 +32,21 @@ export default function Hero() {
             </p>
           </div>
           <ColoredButton
+            href="/pricing"
             text="Get 30 Days Risk Free"
             className="from-sky-500 via-purple-500 blur to-orange-500"
           />
         </div>
       </div>
-      <div className="mb-32">
-        <div className="flex justify-center">
-          <div className="w-full h-auto container 2xl:max-w-7xl mx-auto px-6 md:px-12 relative">
-            <ImageSlider images={heroImages} />
+      <FadeIn>
+        <div className="mb-32">
+          <div className="flex justify-center">
+            <div className="w-full h-auto container 2xl:max-w-7xl mx-auto px-6 md:px-12 relative">
+              <ImageSlider images={heroImages} />
+            </div>
           </div>
         </div>
-      </div>
+      </FadeIn>
     </section>
   );
 }

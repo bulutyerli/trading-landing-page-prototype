@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useInView } from 'react-intersection-observer';
 import ColoredButton from './ColoredButton';
 
 export const PriceButton = ({
@@ -38,6 +38,7 @@ export default function Pricing() {
       saving: 'You save 20% a year',
       includes: 'Package included:',
       popular: false,
+      href: '/pricing',
     },
     {
       title: 'Yearly',
@@ -46,6 +47,7 @@ export default function Pricing() {
       perYear: '$419.88 / yr',
       saving: 'You save 30% a year',
       popular: true,
+      href: '/pricing',
     },
     {
       title: 'Lifetime',
@@ -54,6 +56,7 @@ export default function Pricing() {
       perYear: '$699.99 / one-time',
       saving: 'Unlimited Access',
       popular: false,
+      href: '/pricing',
     },
   ];
 
@@ -75,10 +78,12 @@ export default function Pricing() {
     },
   ];
 
+  const { ref, inView } = useInView({ threshold: 0.25, triggerOnce: true });
+
   return (
     <section className="my-32 ">
       <div>
-        <div className="bg-[url('/bg1.png')] bg-stretch bg-no-repeat bg-center">
+        <div className="bg-[url('/pricebg.png')] bg-stretch bg-no-repeat bg-top">
           <div className="max-w-7xl mx-auto space-y-8 sm:space-y-16">
             <h1 className="px-6 text-4xl sm:text-7xl font-bold text-balance text-center">
               Plans for every style of trading
@@ -135,9 +140,12 @@ export default function Pricing() {
                       return (
                         <div
                           key={price.perMonth}
+                          ref={ref}
                           className={`rounded-3xl p-3 pb-6 border flex flex-col relative transition-colors duration-1000 ${
                             price.popular
-                              ? 'bg-white text-slate-900'
+                              ? `bg-slate-900 text-slate-900 ${
+                                  inView && 'bg-white'
+                                }`
                               : 'bg-slate-900'
                           }`}
                         >
@@ -223,9 +231,13 @@ export default function Pricing() {
                           </div>
                           <div className="mt-6 flex justify-center">
                             <ColoredButton
-                              className="from-beige-200 via-cyan-500 blur to-cobalt-700
-"
+                              className="from-beige-200 via-cyan-500 blur to-cobalt-700"
                               text="Subscribe"
+                              bg={
+                                price.popular &&
+                                'bg-gradient-to-r from-cobalt-700 to-cyan-500'
+                              }
+                              href={price.href}
                             />
                           </div>
                           <span className="mt-6 block text-xs text-center text-slate-400">
