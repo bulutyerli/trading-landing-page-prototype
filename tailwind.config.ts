@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      backgroundSize: {
+        stretch: '100% 100%',
+      },
       colors: {
         main: '#121721',
         beige: {
