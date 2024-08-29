@@ -3,7 +3,7 @@ export default function CustomButton({
   className,
 }: {
   text: string;
-  className: string;
+  className?: string;
 }) {
   return (
     <div

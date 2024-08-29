@@ -3,10 +3,11 @@ import FeatureOne from './components/Features/FeatureOne';
 import FeatureThree from './components/Features/FeatureThree';
 import FeatureTwo from './components/Features/FeatureTwo';
 import FeatureWrapper from './components/Features/FeatureWrapper';
-import Features from './components/Features/FeatureWrapper';
 import Hero from './components/Hero';
+import InformationBox from './components/InformationBox';
 import Pricing from './components/Pricing';
 import Reviews from './components/Reviews';
+import { CiSearch } from 'react-icons/ci';
 
 export default function Home() {
   return (
@@ -56,6 +57,22 @@ export default function Home() {
       <Reviews />
       <Pricing />
       <FAQ />
+      <section className="container mx-auto px-6 max-w-4xl flex flex-col sm:flex-row gap-6 mt-32">
+        <InformationBox
+          icon={<CiSearch size={25} />}
+          title="Explore All Features"
+          desc="Learn how UAlgo works and all about how you can upgrade your charts to the next level."
+          buttonText="Explore Features"
+          href="/"
+        />
+        <InformationBox
+          icon={<CiSearch size={25} />}
+          title="Choose a Plan"
+          desc="Get a plan that suits your style of trading to improve your trading workflows and level up your analysis."
+          buttonText="Choose Plan"
+          href="/pricing"
+        />
+      </section>
     </main>
   );
 }

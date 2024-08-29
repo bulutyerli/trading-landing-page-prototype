@@ -38,4 +38,59 @@ export const questions = [
       },
     ],
   },
+  {
+    title: 'Is there a free trial available?',
+    content: [
+      {
+        p: 'Yes, we offer a 7-day free trial for our Premium Plan. You can try out all the features before committing to a subscription.',
+      },
+      {
+        p: 'To start the free trial, simply select the Premium Plan and sign up. You will not be charged until the trial period ends.',
+      },
+    ],
+  },
+  {
+    title: 'Can I upgrade or downgrade my plan later?',
+    content: [
+      {
+        p: 'Yes, you can upgrade or downgrade your plan at any time from your account settings. The changes will take effect immediately.',
+      },
+      {
+        p: 'If you upgrade, you will only pay the difference for the remaining period of your subscription.',
+      },
+    ],
+  },
+  {
+    title: 'Do you offer refunds?',
+    content: [
+      {
+        p: 'We offer a 30-day money-back guarantee on all plans. If you are not satisfied with the service, you can request a full refund within 30 days of your purchase.',
+      },
+      {
+        p: 'To request a refund, please contact our support team with your order details.',
+      },
+    ],
+  },
+  {
+    title: 'Are there any hidden fees?',
+    content: [
+      {
+        p: 'No, there are no hidden fees. The price you see is the price you pay, including any applicable taxes.',
+      },
+      {
+        p: 'We believe in transparent pricing, so you will never be surprised by unexpected charges.',
+      },
+    ],
+  },
+  {
+    title: 'Can I cancel my subscription anytime?',
+    content: [
+      {
+        p: 'Yes, you can cancel your subscription at any time from your account settings. Your access will continue until the end of the current billing cycle.',
+      },
+      {
+        p: 'After cancellation, you will not be charged again, and you can re-subscribe at any time in the future.',
+      },
+    ],
+  },
 ];
