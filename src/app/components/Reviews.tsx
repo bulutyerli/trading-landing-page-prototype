@@ -8,8 +8,11 @@ export default function Reviews() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [slidePlay, setSlidePlay] = useState(true);
   const sliderRef = useRef<HTMLDivElement>(null);
+
+  const reviewCount = reviews.length;
   const reviewSlider = [...reviews, ...reviews, ...reviews];
-  const reviewCount = reviewSlider.length;
+  const totalSlides = reviewSlider.length;
+  const slideWidth = 100 / totalSlides;
 
   useEffect(() => {
     if (slidePlay) {
@@ -24,36 +27,36 @@ export default function Reviews() {
   useEffect(() => {
     if (!sliderRef.current) return;
 
-    if (currentSlide >= reviewCount * 2) {
+    if (currentSlide >= totalSlides - reviewCount) {
       setTimeout(() => {
-        if (!sliderRef.current) return;
-        sliderRef.current.style.transition = 'none';
+        sliderRef.current!.style.transition = 'none';
         setCurrentSlide(reviewCount);
       }, 500);
     } else if (currentSlide < 0) {
       setTimeout(() => {
-        if (!sliderRef.current) return;
-        sliderRef.current.style.transition = 'none';
-        setCurrentSlide(reviewCount - 1);
+        sliderRef.current!.style.transition = 'none';
+        setCurrentSlide(totalSlides - reviewCount * 2);
       }, 500);
     } else {
       sliderRef.current.style.transition = 'transform 0.5s ease-in-out';
     }
-  }, [currentSlide, reviewCount]);
+  }, [currentSlide, totalSlides, reviewCount]);
 
-  const transformValue = `translateX(-${(currentSlide * 300) / reviewCount}%)`;
+  const transformValue = `translateX(-${
+    (currentSlide % totalSlides) * slideWidth
+  }%)`;
 
   const handlePrevClick = () => {
     setSlidePlay(false);
     setCurrentSlide((prevSlide) =>
-      prevSlide <= 0 ? reviewCount * 2 - 1 : prevSlide - 1
+      prevSlide <= 0 ? totalSlides - reviewCount : prevSlide - 1
     );
   };
 
   const handleNextClick = () => {
     setSlidePlay(false);
     setCurrentSlide((prevSlide) =>
-      prevSlide >= reviewCount * 2 - 1 ? 0 : prevSlide + 1
+      prevSlide >= totalSlides - 1 ? 0 : prevSlide + 1
     );
   };
 
