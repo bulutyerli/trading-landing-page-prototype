@@ -22,7 +22,6 @@ export default function LogInForm() {
   } = useForm<Auth>();
 
   const onSubmit: SubmitHandler<Auth> = async (data) => {
-    console.log(data);
     const result = await login(data);
     if (!result.success) {
       setSignInError(result.error);
@@ -91,7 +90,7 @@ export default function LogInForm() {
         Continue
       </button>
       <span className="text-sm text-slate-400">
-        Don't have an account?
+        Do not have an account?
         <Link
           href={'/sign-up'}
           className="text-cobalt-400 text-sm hover:underline"
