@@ -10,54 +10,36 @@ export default function Reviews() {
   const sliderRef = useRef<HTMLDivElement>(null);
 
   const reviewCount = reviews.length;
-  const reviewSlider = [...reviews, ...reviews, ...reviews];
-  const totalSlides = reviewSlider.length;
+  const totalSlides = reviewCount;
   const slideWidth = 100 / totalSlides;
 
   useEffect(() => {
     if (slidePlay) {
       const interval = setInterval(() => {
-        setCurrentSlide((prevSlide) => prevSlide + 1);
+        setCurrentSlide((prevSlide) => (prevSlide + 1) % totalSlides);
       }, 3000);
 
       return () => clearInterval(interval);
     }
-  }, [slidePlay]);
+  }, [slidePlay, totalSlides]);
 
   useEffect(() => {
     if (!sliderRef.current) return;
 
-    if (currentSlide >= totalSlides - reviewCount) {
-      setTimeout(() => {
-        sliderRef.current!.style.transition = 'none';
-        setCurrentSlide(reviewCount);
-      }, 500);
-    } else if (currentSlide < 0) {
-      setTimeout(() => {
-        sliderRef.current!.style.transition = 'none';
-        setCurrentSlide(totalSlides - reviewCount * 2);
-      }, 500);
-    } else {
-      sliderRef.current.style.transition = 'transform 0.5s ease-in-out';
-    }
-  }, [currentSlide, totalSlides, reviewCount]);
-
-  const transformValue = `translateX(-${
-    (currentSlide % totalSlides) * slideWidth
-  }%)`;
+    sliderRef.current.style.transition = 'transform 0.5s ease-in-out';
+    sliderRef.current.style.transform = `translateX(-${
+      currentSlide * slideWidth
+    }%)`;
+  }, [currentSlide, slideWidth]);
 
   const handlePrevClick = () => {
     setSlidePlay(false);
-    setCurrentSlide((prevSlide) =>
-      prevSlide <= 0 ? totalSlides - reviewCount : prevSlide - 1
-    );
+    setCurrentSlide((prevSlide) => (prevSlide - 1 + totalSlides) % totalSlides);
   };
 
   const handleNextClick = () => {
     setSlidePlay(false);
-    setCurrentSlide((prevSlide) =>
-      prevSlide >= totalSlides - 1 ? 0 : prevSlide + 1
-    );
+    setCurrentSlide((prevSlide) => (prevSlide + 1) % totalSlides);
   };
 
   return (
@@ -112,12 +94,8 @@ export default function Reviews() {
         </div>
       </div>
       <div className="overflow-hidden">
-        <div
-          ref={sliderRef}
-          className="flex transition-transform ease-in-out"
-          style={{ transform: transformValue }}
-        >
-          {reviewSlider.map((review, index) => (
+        <div ref={sliderRef} className="flex">
+          {reviews.map((review, index) => (
             <div
               key={index}
               className="flex flex-col bg-white rounded-3xl p-6 sm:p-10 shadow-xl h-full shadow-slate-300 mr-10 text-black flex-shrink-0 w-[350px] lg:w-[500px] mb-10"
