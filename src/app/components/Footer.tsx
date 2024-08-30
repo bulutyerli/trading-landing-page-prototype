@@ -39,7 +39,7 @@ export default function Footer() {
                 <FaXTwitter />
               </Link>
               <Link
-                href="https://www.discord.com"
+                href="https://discord.com/invite/kyQkKxUQkW"
                 aria-label="Discord"
                 target="_blank"
                 rel="noopener noreferrer"

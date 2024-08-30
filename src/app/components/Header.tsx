@@ -18,8 +18,19 @@ export default function Header() {
   const [menu, setMenu] = useState(false);
   const navLinks = [
     {
+      title: 'Free Indicators',
+      href: 'https://www.tradingview.com/u/UAlgo/#published-scripts',
+      isNewTab: true,
+    },
+    {
+      title: 'Discord',
+      href: 'https://discord.com/invite/kyQkKxUQkW',
+      isNewTab: true,
+    },
+    {
       title: 'Pricing',
       href: '/pricing',
+      isNewTab: false,
     },
   ];
 
@@ -67,6 +78,9 @@ export default function Header() {
                 <Link
                   className="text-white hover:text-slate-500"
                   href={link.href}
+                  aria-label={link.title}
+                  target={link.isNewTab ? '_blank' : undefined}
+                  rel={link.isNewTab ? 'noopener noreferrer' : undefined}
                 >
                   {link.title}
                 </Link>
@@ -138,6 +152,8 @@ export default function Header() {
                       className="text-white hover:text-slate-500"
                       href={link.href}
                       onClick={() => setMenu(false)}
+                      target={link.isNewTab ? '_blank' : undefined}
+                      rel={link.isNewTab ? 'noopener noreferrer' : undefined}
                     >
                       {link.title}
                     </Link>

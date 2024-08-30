@@ -19,7 +19,7 @@ export default function Hero() {
   ];
 
   return (
-    <section className="pt-16 pb-[150px] sm:pb-[250px] md:pb-[400px] lg:pb-[1000px] bg-[url('/bg1.png')] bg-cover md:bg-stretch bg-no-repeat bg-center md:bg-[right_-250px_center]">
+    <section className="pt-16 pb-[500px] sm:pb-[600px] md:pb-[700px] lg:pb-[900px] xl:pb-[1000px] bg-[url('/bg1.png')] bg-cover md:bg-stretch bg-no-repeat bg-center md:bg-[right_-250px_center]">
       <div className="container mx-auto px-6 space-y-8 sm:space-y-16 py-32">
         <div className="text-center space-y-10 my-8 sm:my-16 text-balance">
           <h1 className="max-w-prose mx-auto font-semibold text-5xl sm:text-7xl xl:text-8xl py-2">

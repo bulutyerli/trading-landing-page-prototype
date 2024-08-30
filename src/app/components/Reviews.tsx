@@ -1,63 +1,28 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
 import { reviews } from '../data/reviews';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/autoplay';
+import 'swiper/css/bundle';
+import 'swiper/css/navigation';
+import { useRef } from 'react';
 
 export default function Reviews() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [slidePlay, setSlidePlay] = useState(true);
-  const sliderRef = useRef<HTMLDivElement>(null);
+  const swiperRef = useRef(null);
 
-  const reviewCount = reviews.length;
-  const reviewSlider = [...reviews, ...reviews, ...reviews];
-  const totalSlides = reviewSlider.length;
-  const slideWidth = 100 / totalSlides;
-
-  useEffect(() => {
-    if (slidePlay) {
-      const interval = setInterval(() => {
-        setCurrentSlide((prevSlide) => prevSlide + 1);
-      }, 3000);
-
-      return () => clearInterval(interval);
+  const handlePrev = () => {
+    if (swiperRef.current) {
+      swiperRef.current.swiper.slidePrev();
     }
-  }, [slidePlay]);
-
-  useEffect(() => {
-    if (!sliderRef.current) return;
-
-    if (currentSlide >= totalSlides - reviewCount) {
-      setTimeout(() => {
-        sliderRef.current!.style.transition = 'none';
-        setCurrentSlide(reviewCount);
-      }, 500);
-    } else if (currentSlide < 0) {
-      setTimeout(() => {
-        sliderRef.current!.style.transition = 'none';
-        setCurrentSlide(totalSlides - reviewCount * 2);
-      }, 500);
-    } else {
-      sliderRef.current.style.transition = 'transform 0.5s ease-in-out';
-    }
-  }, [currentSlide, totalSlides, reviewCount]);
-
-  const transformValue = `translateX(-${
-    (currentSlide % totalSlides) * slideWidth
-  }%)`;
-
-  const handlePrevClick = () => {
-    setSlidePlay(false);
-    setCurrentSlide((prevSlide) =>
-      prevSlide <= 0 ? totalSlides - reviewCount : prevSlide - 1
-    );
   };
 
-  const handleNextClick = () => {
-    setSlidePlay(false);
-    setCurrentSlide((prevSlide) =>
-      prevSlide >= totalSlides - 1 ? 0 : prevSlide + 1
-    );
+  const handleNext = () => {
+    if (swiperRef.current) {
+      swiperRef.current.swiper.slideNext();
+    }
   };
 
   return (
@@ -74,7 +39,7 @@ export default function Reviews() {
         </div>
         <div className="text-black flex gap-3">
           <button
-            onClick={handlePrevClick}
+            onClick={handlePrev}
             className="px-6 h-12 flex items-center rounded-full border-2 border-black"
           >
             <svg
@@ -92,7 +57,7 @@ export default function Reviews() {
             </svg>
           </button>
           <button
-            onClick={handleNextClick}
+            onClick={handleNext}
             className="px-6 h-12 flex items-center rounded-full border-2 border-black"
           >
             <svg
@@ -111,48 +76,56 @@ export default function Reviews() {
           </button>
         </div>
       </div>
-      <div className="overflow-hidden">
-        <div
-          ref={sliderRef}
-          className="flex transition-transform ease-in-out"
-          style={{ transform: transformValue }}
-        >
-          {reviewSlider.map((review, index) => (
-            <div
-              key={index}
-              className="flex flex-col bg-white rounded-3xl p-6 sm:p-10 shadow-xl h-full shadow-slate-300 mr-10 text-black flex-shrink-0 w-[350px] lg:w-[500px] mb-10"
-            >
-              <div className="text-2xl lg:text-4xl font-semibold mb-4 lg:mb-6">
-                {review.title}
-              </div>
-              <div className="text-lg lg:text-2xl mb-4 lg:mb-6">
-                {review.review}
-              </div>
-              <div className="flex-grow mb-4 lg:mb-6">
-                <Image
-                  className="w-1/2"
-                  src={'/reviews/trustpilot_five_stars.png'}
-                  alt="trust pilot"
-                  width={500}
-                  height={500}
-                />
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="bg-slate-950 w-8 h-8 sm:h-16 sm:w-16 rounded-lg">
-                  <Image
-                    src={review.imageSrc}
-                    className="rounded-lg"
-                    alt={review.name}
-                    width={300}
-                    height={300}
-                  />
+      <div>
+        <div>
+          <Swiper
+            ref={swiperRef}
+            modules={[Autoplay]}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            spaceBetween={0}
+            loop={true}
+            slidesPerView={'auto'}
+            navigation={{
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+            }}
+          >
+            {reviews.map((review, index) => (
+              <SwiperSlide key={review.id}>
+                <div className="flex flex-col bg-white rounded-3xl p-6 sm:p-10 shadow-xl h-full shadow-slate-300 mr-10 text-black flex-shrink-0 w-[300px] lg:w-[500px] mb-10">
+                  <div className="text-2xl lg:text-4xl font-semibold mb-4 lg:mb-6">
+                    {review.title}
+                  </div>
+                  <div className="text-lg lg:text-2xl mb-4 lg:mb-6">
+                    {review.review}
+                  </div>
+                  <div className="flex-grow mb-4 lg:mb-6">
+                    <Image
+                      className="w-1/2"
+                      src={'/reviews/trustpilot_five_stars.png'}
+                      alt="trust pilot"
+                      width={500}
+                      height={500}
+                    />
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="bg-slate-950 w-8 h-8 sm:h-16 sm:w-16 rounded-lg">
+                      <Image
+                        src={review.imageSrc}
+                        className="rounded-lg"
+                        alt={review.name}
+                        width={300}
+                        height={300}
+                      />
+                    </div>
+                    <div className="text-md sm:text-2xl font-semibold">
+                      {review.name}
+                    </div>
+                  </div>
                 </div>
-                <div className="text-md sm:text-2xl font-semibold">
-                  {review.name}
-                </div>
-              </div>
-            </div>
-          ))}
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
     </div>

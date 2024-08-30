@@ -5,3 +5,13 @@
 :root {
   color: white;
 }
+
+.swiper-slide {
+  width: fit-content !important;
+}
+
+.swiper-container {
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+}
