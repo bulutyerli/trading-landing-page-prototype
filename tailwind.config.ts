@@ -21,6 +21,7 @@ const config: Config = {
         },
         cobalt: {
           700: '#0047ab',
+          400: '#0D8ED6',
         },
       },
     },
