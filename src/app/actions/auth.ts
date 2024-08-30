@@ -46,3 +46,5 @@ export async function signup(data: Auth) {
 
   return { success: true };
 }
+
+export async function forgotPassword(data: string) {}

@@ -5,38 +5,38 @@ export const reviews = [
     review:
       'Using the UAlgo indicators doing a top down analysis from the daily and weekly chart, it has not only helped me understand which way price is going but also helps me get into the trend at the right times catching the pullbacks/retes...',
     imageSrc: '/reviews/review1.png',
-    name: 'Damion Powell',
+    name: 'Daniel Brad',
   },
   {
     id: 2,
-    title: 'Very helpful indicators',
+    title: 'After little longer than 1 year',
     review:
-      'Using the UAlgo indicators doing a top down analysis from the daily and weekly chart, it has not only helped me understand which way price is going but also helps me get into the trend at the right times catching the pullbacks/retes...',
+      'I have had the most clear and enlightening experience with UAlgo. I have come from another provider that happened to be more expensive but also more inclined to high level TA which made had a hard time to actually use it properly. With l...',
     imageSrc: '/reviews/review1.png',
-    name: 'Damion Powell',
+    name: 'Paul',
   },
   {
     id: 3,
-    title: 'Very helpful indicators',
+    title: 'UAlgo - Worth It',
     review:
-      'Using the UAlgo indicators doing a top down analysis from the daily and weekly chart, it has not only helped me understand which way price is going but also helps me get into the trend at the right times catching the pullbacks/retes...',
+      'Hello everyone! I have been in the trading business for the last 5 years. I tried many things from pure price action to repainting indicators. I lost money but I never lost hope and that is how I found UAlgo. I just never gave up. I was exc...',
     imageSrc: '/reviews/review1.png',
-    name: 'Damion Powell',
+    name: 'Kemal Can',
   },
   {
     id: 4,
-    title: 'Very helpful indicators',
+    title: 'Premium indicators. Premium Community',
     review:
-      'Using the UAlgo indicators doing a top down analysis from the daily and weekly chart, it has not only helped me understand which way price is going but also helps me get into the trend at the right times catching the pullbacks/retes...',
+      'UAlgo has really stepped my trading up, there is a setup for any style of trading you prefer which is very nice you do not have to put yourself in a box metaphorically speaking. The team is constantly taking feedback and improving th...',
     imageSrc: '/reviews/review1.png',
-    name: 'Damion Powell',
+    name: 'Jessica Ortega',
   },
   {
     id: 5,
-    title: 'Very helpful indicators',
+    title: 'I am happy to be in this family!',
     review:
-      'Using the UAlgo indicators doing a top down analysis from the daily and weekly chart, it has not only helped me understand which way price is going but also helps me get into the trend at the right times catching the pullbacks/retes...',
+      'I have been trading Forex for over 10+ years. UAlgo exactly allows me to see the market faster and confirm entries / exits and it is amazing! The technical support and especially the discord channel are amazing. The creators of the pr...',
     imageSrc: '/reviews/review1.png',
-    name: 'Damion Powell',
+    name: 'Uğur Turan',
   },
 ];

@@ -85,9 +85,9 @@ export default function Pricing() {
       <div>
         <div className="bg-[url('/pricebg.png')] bg-stretch bg-no-repeat bg-top">
           <div className="max-w-7xl mx-auto space-y-8 sm:space-y-16">
-            <h1 className="px-6 text-4xl sm:text-7xl font-bold text-balance text-center">
+            <h2 className="px-6 text-4xl sm:text-7xl font-bold text-balance text-center">
               Plans for every style of trading
-            </h1>
+            </h2>
             {/* <div className="flex flex-col items-center gap-4">
               <div className="relative">
                 <div className="inline-block ">
