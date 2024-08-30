@@ -15,13 +15,13 @@ export default function Reviews() {
 
   const handlePrev = () => {
     if (swiperRef.current) {
-      swiperRef.current.swiper.slidePrev();
+      (swiperRef.current as any).swiper.slidePrev();
     }
   };
 
   const handleNext = () => {
     if (swiperRef.current) {
-      swiperRef.current.swiper.slideNext();
+      (swiperRef.current as any).swiper.slideNext();
     }
   };
 
