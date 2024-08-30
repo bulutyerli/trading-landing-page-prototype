@@ -143,8 +143,8 @@ export default function Pricing() {
                           ref={ref}
                           className={`rounded-3xl p-3 pb-6 border flex flex-col relative transition-colors duration-1000 ${
                             price.popular
-                              ? `bg-slate-900 text-slate-900 ${
-                                  inView && 'bg-white'
+                              ? `bg-white sm:bg-slate-900 text-slate-900 ${
+                                  inView && 'lg:bg-white'
                                 }`
                               : 'bg-slate-900'
                           }`}
