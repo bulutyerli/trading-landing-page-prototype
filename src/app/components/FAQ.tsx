@@ -26,7 +26,7 @@ export default function FAQ() {
               >
                 {({ open }) => (
                   <>
-                    <DisclosureButton className="w-full flex justify-between items-center rounded-lg p-4 lg:px-6 text-base lg:text-lg text-white">
+                    <DisclosureButton className="w-full flex justify-between items-center rounded-lg p-4 lg:px-6 text-base lg:text-lg text-white text-start">
                       {question.title}
                       {open ? (
                         <FaMinus className="w-3 h-3 text-white" />
